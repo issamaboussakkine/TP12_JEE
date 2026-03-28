@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Issam : TP Spring Security avec JPA - Authentification en base de données
+    Auteur : Issam ABOUSSAKKINE
+    Date : 28 Mars 2026
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Issam : Parent Spring Boot - Gère les versions des dépendances -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.14-SNAPSHOT</version>
+		<relativePath/> <!-- Issam : Recherche dans le repository Maven -->
+	</parent>
+
+	<!-- Issam : Identifiants du projet -->
+	<groupId>ma.fstg.security</groupId>
+	<artifactId>spring-security-jpa</artifactId>
+	<version>1.0.0-ISSAM</version> <!-- Issam : Version personnalisée -->
+	<name>Spring Security JPA - Issam</name> <!-- Issam : Nom personnalisé -->
+	<description>TP Spring Security avec JPA - Authentification en base de données - Issam ABOUSSAKKINE</description>
+	<url>https://github.com/issam/spring-security-jpa</url>
+
+	<!-- Issam : Licence du projet -->
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<!-- Issam : Informations sur le développeur -->
+	<developers>
+		<developer>
+			<name>Issam ABOUSSAKKINE</name>
+			<email>issam@example.com</email>
+			<organization>FSTG</organization>
+		</developer>
+	</developers>
+
+	<!-- Issam : Gestion de la source -->
+	<scm>
+		<connection>scm:git:https://github.com/issam/spring-security-jpa.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/issam/spring-security-jpa.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/issam/spring-security-jpa</url>
+	</scm>
+
+	<!-- Issam : Propriétés du projet -->
+	<properties>
+		<java.version>17</java.version> <!-- Issam : Version Java utilisée -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- Issam : Dépendances du projet -->
+	<dependencies>
+		<!-- Issam : Spring Data JPA - Pour l'accès à la base de données -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Issam : Spring Security - Pour l'authentification et les autorisations -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- Issam : Thymeleaf - Moteur de templates HTML -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- Issam : Spring Web - Pour les contrôleurs MVC -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Issam : Intégration Spring Security avec Thymeleaf -->
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
+		</dependency>
+
+		<!-- Issam : Spring Boot DevTools - Rechargement automatique -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Issam : MySQL Connector - Pilote pour la base MySQL -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Issam : Lombok - Réduction du code boilerplate -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Issam : Spring Boot Test - Tests unitaires -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Issam : Spring Security Test - Tests de sécurité -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Issam : Configuration du build -->
+	<build>
+		<plugins>
+			<!-- Issam : Plugin Maven Compiler avec Lombok -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+
+			<!-- Issam : Plugin Spring Boot pour empaqueter l'application -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Issam : Dépôts Maven pour les versions SNAPSHOT -->
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<!-- Issam : Dépôts pour les plugins Maven -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
