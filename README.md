@@ -41,7 +41,7 @@ Maven	3.6+
 ### Tests avec Postman
 
 1. Authentification
-2. 
+ 
 <img width="1908" height="1014" alt="Capture d&#39;écran 2026-03-28 043415" src="https://github.com/user-attachments/assets/fcc7f7a1-e413-421b-a112-22ab13d65085" />
 
 
